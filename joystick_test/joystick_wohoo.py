@@ -1,36 +1,37 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import pygame
+import pygame, sys, subprocess, time
 from pygame.locals import *
-import subprocess
-import time
 
-
+# helper function
 def pellet():
     subprocess.call("c:/pellet.exe")
     time.sleep(.7)
 
+
 pygame.init()
 
-windowSurface = pygame.display.set_mode((800, 450), 0, 32)
+# for fullscreen, add:  (pygame.NOFRAME and pygame.FULLSCREEN)
+screen = pygame.display.set_mode((800, 450))
 
-joystick_count = pygame.joystick.get_count()
-print "There is ", joystick_count, "joystick/s."
-if joystick_count == 0:
-    print "Error: No joystick found."
-else:
-    joy = pygame.joystick.Joystick(0)
-    joy.init()
+# initialize joystick
+joy = pygame.joystick.Joystick(0)
+joy.init()
 
-crosshairs = pygame.image.load("crosshairs.png")
-background = pygame.image.load("background.jpg")
+# set cursor speed
+cursorSpeed = 10
 
+# set start position
 x = 385
 y = 210
 
-Rectangle = pygame.Rect(x, y, 30, 30)
+# load images
+crosshairs = pygame.image.load("crosshairs.png")
+background = pygame.image.load("background.jpg")
+
+# set rectangles for images
+Cursor = pygame.Rect(x, y, 30, 30)
 Back = pygame.Rect(0, 0, 800, 450)
 
 clock = pygame.time.Clock()
@@ -45,33 +46,24 @@ while True:
 
     h_axis_pos = round(joy.get_axis(0), 5)
     v_axis_pos = round(joy.get_axis(1), 5)
-    # print (h_axis_pos, v_axis_pos)
-
-    if x < 0 and h_axis_pos < 0:
-        h_axis_pos = 0
-    elif x > 770 and h_axis_pos > 0:
-        h_axis_pos = 0
     
-    if y < 0 and v_axis_pos < 0:
-        v_axis_pos = 0
-    elif y > 420 and v_axis_pos > 0:
-        v_axis_pos = 0
+    # update position
+    x += int(h_axis_pos * cursorSpeed)
+    y += int(v_axis_pos * cursorSpeed)
 
-    # _axis_pos*[speed_of_cursor]
-    x += int(h_axis_pos*10)
-    y += int(v_axis_pos*10)
+    Cursor.left = x
+    Cursor.top = y
 
-    # print 'Position:', x+15, y+15
-    Rectangle.left = x
-    Rectangle.top = y
+    # keep cursor from going off-screen
+    if x < 0:       x = 0
+    elif x > 770:   x = 770
+    if y < 0:       y = 0
+    elif y > 420:   y = 420
 
-    ###windowSurface.fill(WHITE)
+    # screen.fill(WHITE)
 
-    windowSurface.blit(background, Back)
-    windowSurface.blit(crosshairs, Rectangle)
+    screen.blit(background, Back)
+    screen.blit(crosshairs, Cursor)
 
     pygame.display.update()
     clock.tick(20)
-
-# pygame.quit()
-# sys.exit()
