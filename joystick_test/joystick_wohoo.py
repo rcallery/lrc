@@ -20,7 +20,7 @@ joy = pygame.joystick.Joystick(0)
 joy.init()
 
 # set cursor speed
-cursorSpeed = 10
+cursorSpeed = 5
 
 # set start position
 x = 385
@@ -42,7 +42,6 @@ while True:
         if event.type == QUIT or (event.type == KEYDOWN and (event.key == K_ESCAPE or event.key == K_q)):
             pygame.quit()
             sys.exit()
-            # break
 
     h_axis_pos = round(joy.get_axis(0), 5)
     v_axis_pos = round(joy.get_axis(1), 5)
@@ -60,10 +59,9 @@ while True:
     if y < 0:       y = 0
     elif y > 420:   y = 420
 
-    # screen.fill(WHITE)
-
+    # update screen
     screen.blit(background, Back)
     screen.blit(crosshairs, Cursor)
 
     pygame.display.update()
-    clock.tick(20)
+    clock.tick(60)
