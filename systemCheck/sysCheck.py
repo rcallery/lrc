@@ -1,52 +1,16 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# delete these two lines if lrc.py is in the same folder
+import imp
+lrc = imp.load_source('lrc', '../lrc.py')
 
-import pygame, sys, time, subprocess
-from pygame.locals import *
-
-# USER INPUT
-# ----------
+from lrc import *
 
 # set cursor speed, size, colour, and start position
 cursorSpeed = 8
 cursorSize = (25, 25)
 cursorPos = (400, 200)
 
-
-# ----------
-
-pygame.init()
-pygame.mixer.init()
-
-# helper functions
-def pellet(num = 1):
-    '''Dispense [num] pellets. Defaults to 1.'''
-    for i in range(num):
-        subprocess.call("c:/pellet.exe")
-
-def sound(boolCorr):
-    '''If True, play 'correct' sound; if False, play 'incorrect' sound.'''
-    if boolCorr:    pygame.mixer.music.load('sounds/correct.wav')
-    else:           pygame.mixer.music.load('sounds/incorrect.wav')
-
-    pygame.mixer.music.play()
-
-def quitEscQ():
-    '''Quit pygame on QUIT, [Esc], and [Q].'''
-    for event in pygame.event.get():
-        if event.type == QUIT or (event.type == KEYDOWN and (event.key == K_ESCAPE or event.key == K_q)):
-            pygame.quit()
-            sys.exit()
-
-
+# for developing purposes (not fullscreen, with frame)
 screen = pygame.display.set_mode((800, 600))
-# screen = pygame.display.set_mode((800, 600), (pygame.NOFRAME and pygame.FULLSCREEN))
-scrRect = pygame.Rect(0, 0, 800, 600)
-
-# hide mouse and initialize joystick
-pygame.mouse.set_visible(False)
-joy = pygame.joystick.Joystick(0)
-joy.init()
 
 # define cursor
 cursor = pygame.Rect((0, 0), cursorSize)
