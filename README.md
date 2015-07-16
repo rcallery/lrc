@@ -17,7 +17,7 @@ You only need the last line if lrc.py is in the same folder as your script.
   - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
 - initialises pygame, pygame.mixer
 - sets `screen` as (800, 600), fullscreen, no frame
-- defines scrRect to match screen
+- defines `scrRect` to match screen
 - hides mouse cursor
 - initialises joystick as `joy`
 
