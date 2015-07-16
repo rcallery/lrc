@@ -1,14 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pygame, sys, subprocess, time
+import pygame, sys
 from pygame.locals import *
-
-# helper function
-def pellet():
-    subprocess.call("c:/pellet.exe")
-    time.sleep(.7)
-
 
 pygame.init()
 screen = pygame.display.set_mode((800, 450))
@@ -16,6 +10,9 @@ screen = pygame.display.set_mode((800, 450))
 # initialize joystick
 joy = pygame.joystick.Joystick(0)
 joy.init()
+
+# hide mouse
+pygame.mouse.set_visible(False)
 
 # set cursor speed
 cursorSpeed = 5
