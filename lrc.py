@@ -1,7 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import pygame, sys, os, time, random
+import pygame, sys, os
+import math, random, time, datetime
 from pygame.locals import *
 
 # helper functions
