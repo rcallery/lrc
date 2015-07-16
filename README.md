@@ -10,7 +10,12 @@ You only need the last line if lrc.py is in the same folder as your script.
 
 	from lrc import *
 
-- imports modules: pygame, pygame.locals, sys, os time
+- imports modules
+  - sys
+  - pygame, pygame.locals
+  - os
+  - time
+  - random
 - defines helper functions
   - `pellet(num)`: Dispenses [num] pellets. Defaults to 1.
   - `sound(boolCorr)`: If True, play 'correct' sound; if False, play 'incorrect' sound.
