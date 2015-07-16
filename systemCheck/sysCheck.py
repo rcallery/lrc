@@ -68,7 +68,7 @@ while True:
     cursor.clamp_ip(scrRect)
 
     if cursor.colliderect(corRect):
-    	# pellet()
+    	pellet()
     	sound(True)
     	cursor.center = cursorPos
     elif cursor.colliderect(incorRect):
