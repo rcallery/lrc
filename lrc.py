@@ -8,8 +8,8 @@ from pygame.locals import *
 def pellet(num = 1):
     '''Dispense [num] pellets. Defaults to 1.'''
     for i in range(num):
-        # subprocess.call("c:/pellet.exe")
-        os.system("c:/pellet.exe")
+        # subprocess.call('c:/pellet.exe')
+        os.system('c:/pellet.exe')
 
 def sound(boolCorr):
     '''If True, play 'correct' sound; if False, play 'incorrect' sound.'''
