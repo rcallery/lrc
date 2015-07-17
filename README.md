@@ -30,11 +30,12 @@ Add these lines at the top of your .py script:
 - Hides mouse cursor
 - Returns `joyCount = 0` if it can't find a joystick. Initialises joystick as `joy` if available
 - Sets cursor defaults
-
-    cursorSpeed = 8
-    cursorSize = (20, 20)
-    cursorCol = (0, 0, 0)
-    cursorPos = (400, 200)
+```
+  cursorSpeed = 8
+  cursorSize = (20, 20)
+  cursorCol = (0, 0, 0)
+  cursorPos = (400, 200)
+```
 
 ## systemCheck
 
