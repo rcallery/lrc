@@ -15,7 +15,7 @@ You only need the last line if lrc.py is in the same folder as your script.
   - sys, os
   - math, random, time, datetime
 - defines helper functions
-  - `pellet(num)`: Dispenses [num] pellets. Defaults to 1.
+  - `pellet(num)`: Dispenses [num] pellets, then waits 700 ms. Defaults to 1 pellet.
   - `sound(boolCorr)`: If True, play 'correct' sound; if False, play 'incorrect' sound.
   - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
 - initialises pygame, pygame.mixer
