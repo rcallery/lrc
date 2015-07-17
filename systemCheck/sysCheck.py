@@ -10,7 +10,7 @@ cursorSize = (25, 25)
 cursorPos = (400, 200)
 
 # for developing purposes (not fullscreen, with frame)
-screen = pygame.display.set_mode((800, 600))
+# screen = pygame.display.set_mode((800, 600))
 
 # define cursor
 cursor = pygame.Rect((0, 0), cursorSize)
@@ -30,8 +30,8 @@ while True:
     quitEscQ()
 
     # move cursor
-    h_axis_pos = round(joy.get_axis(0), 5)
-    v_axis_pos = round(joy.get_axis(1), 5)
+    h_axis_pos = round(joy.get_axis(0))
+    v_axis_pos = round(joy.get_axis(1))
     cursor.move_ip(h_axis_pos * cursorSpeed, 
                    v_axis_pos * cursorSpeed)
 
@@ -40,7 +40,7 @@ while True:
 
     if cursor.colliderect(corRect):
         sound(True)
-    	# pellet(3)
+    	pellet(3)
         cursor.center = cursorPos
     elif cursor.colliderect(incorRect):
     	sound(False)
