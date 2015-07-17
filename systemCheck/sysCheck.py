@@ -40,11 +40,11 @@ while True:
 
     if cursor.colliderect(corRect):
         sound(True)
-    	pellet(3)
+        pellet(3)
         cursor.center = cursorPos
     elif cursor.colliderect(incorRect):
-    	sound(False)
-    	cursor.center = cursorPos
+        sound(False)
+        cursor.center = cursorPos
 
     # update screen
     screen.fill((255, 255, 255))
