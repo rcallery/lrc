@@ -17,8 +17,8 @@ def sound(boolCorr):
 def pellet(num = 1):
     '''Dispense [num] pellets. Defaults to 1.'''
     for i in range(num):
-        # subprocess.call('c:/pellet.exe')
         os.system('c:/pellet.exe')
+        time.sleep(.7)
 
 def quitEscQ():
     '''Quit pygame on QUIT, [Esc], and [Q].'''
