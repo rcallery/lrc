@@ -14,11 +14,11 @@ Add these lines at the top of your .py script:
 	lrc = imp.load_source('lrc', 'c:/lrc.py')
 	from lrc import *
 
-- Import modules
+- Imports modules
   - pygame, pygame.locals
   - sys, os
   - math, random, time, datetime
-- Define helper functions
+- Defines helper functions
   - `pellet(num)`: Dispense [num] pellets, then waits 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
   - `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
   - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
@@ -31,6 +31,6 @@ Add these lines at the top of your .py script:
 ## systemCheck
 
 - Use joystick (if available) or arrow keys (if not) to select one of two buttons
-- Reset cursor to start position
+- Resets cursor to start position
   - Green button plays sounds/correct.wav and dispenses three pellets
   - Red button plays sounds/incorrect.wav
