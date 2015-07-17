@@ -64,4 +64,4 @@ while True:
     pygame.display.update()
 
     # frame rate
-    clock.tick(60)
+    clock.tick(fps)
