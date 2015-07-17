@@ -1,6 +1,6 @@
 # LRC Python Experiments
 
-## lrc.py
+## LRC Toolbox - lrc.py
 
 Have these files in `C:/`
 - lrc.py
@@ -14,23 +14,23 @@ Add these lines at the top of your .py script:
 	lrc = imp.load_source('lrc', 'c:/lrc.py')
 	from lrc import *
 
-- imports modules
+- Import modules
   - pygame, pygame.locals
   - sys, os
   - math, random, time, datetime
-- defines helper functions
-  - `pellet(num)`: Dispenses [num] pellets, then waits 700 ms. Defaults to 1 pellet.
+- Define helper functions
+  - `pellet(num)`: Dispense [num] pellets, then waits 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
   - `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
   - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
-- initialises pygame
-- sets `screen` as 800x600, fullscreen, no frame
-- defines `scrRect` to match screen
-- hides mouse cursor
-- initialises joystick as `joy`
+- Initialises pygame
+- Sets `screen` as 800x600, fullscreen, no frame
+- Defines rectangle `scrRect` with screen dimensions
+- Hides mouse cursor
+- Returns `joyCount = 0` if it can't find a joystick. Initialises joystick as `joy` if available
 
 ## systemCheck
 
-- use joystick to select one of two buttons
-- resets cursor to start position
-  - green button plays sounds/correct.wav and dispenses three pellets
-  - red button plays sounds/incorrect.wav
+- Use joystick (if available) or arrow keys (if not) to select one of two buttons
+- Reset cursor to start position
+  - Green button plays sounds/correct.wav and dispenses three pellets
+  - Red button plays sounds/incorrect.wav
