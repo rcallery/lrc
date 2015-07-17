@@ -42,3 +42,9 @@ joyCount = pygame.joystick.get_count()
 if joyCount > 0:
     joy = pygame.joystick.Joystick(0)
     joy.init()
+
+# set cursor speed, size, colour, and start position
+cursorSpeed = 8
+cursorSize = (20, 20)
+cursorCol = (0, 0, 0)
+cursorPos = (400, 200)
