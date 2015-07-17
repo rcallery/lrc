@@ -7,7 +7,7 @@ from lrc import *
 
 # set cursor speed, size, colour, and start position
 cursorSpeed = 8
-cursorSize = (25, 25)
+cursorSize = (20, 20)
 cursorPos = (400, 200)
 
 # [dev] not fullscreen, with frame
@@ -25,14 +25,28 @@ incorRect.center = (600, 400)
 
 clock = pygame.time.Clock()
 
-
 while True:
     # quit on QUIT, [Esc], and [Q]
     quitEscQ()
 
-    # move cursor
-    h_axis_pos = round(joy.get_axis(0))
-    v_axis_pos = round(joy.get_axis(1))
+    # gets key presses
+    key = pygame.key.get_pressed()
+
+    # no movement unless kb or joystick input
+    h_axis_pos = v_axis_pos = 0
+
+    # move cursor with arrow keys (if joystick unavailable)
+    if joyCount == 0:
+        if key[K_LEFT]:    h_axis_pos = -1
+        if key[K_RIGHT]:   h_axis_pos = 1
+        if key[K_UP]:      v_axis_pos = -1
+        if key[K_DOWN]:    v_axis_pos = 1
+
+    # move cursor with joystick (if available)
+    if joyCount > 0:
+        h_axis_pos = round(joy.get_axis(0))
+        v_axis_pos = round(joy.get_axis(1))
+
     cursor.move_ip(h_axis_pos * cursorSpeed, 
                    v_axis_pos * cursorSpeed)
 
@@ -42,8 +56,7 @@ while True:
     if cursor.colliderect(corRect):
         sound(True)
         cursor.center = cursorPos
-        # [dev]
-        # pellet(3)
+        pellet(3)
     elif cursor.colliderect(incorRect):
         sound(False)
         cursor.center = cursorPos
