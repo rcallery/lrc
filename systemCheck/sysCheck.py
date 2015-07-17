@@ -5,11 +5,6 @@ lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
 
-# set cursor speed, size, colour, and start position
-cursorSpeed = 8
-cursorSize = (20, 20)
-cursorPos = (400, 200)
-
 # [dev] not fullscreen, with frame
 # screen = pygame.display.set_mode((800, 600))
 
@@ -65,7 +60,7 @@ while True:
     screen.fill((255, 255, 255))
     pygame.draw.rect(screen, (117, 227, 111), corRect)
     pygame.draw.rect(screen, (232, 70, 70), incorRect)
-    pygame.draw.rect(screen, (0, 0, 0), cursor)
+    pygame.draw.rect(screen, cursorCol, cursor)
     pygame.display.update()
 
     # frame rate
