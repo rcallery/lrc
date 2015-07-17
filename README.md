@@ -2,12 +2,16 @@
 
 ## lrc.py
 
-Use by adding these lines at the top of your .py script.
-You only need the last line if lrc.py is in the same folder as your script.
+Relies on these files in C:/
+- lrc.py
+- correct.wav
+- incorrect.wav
+- pellet.exe
+
+Add these lines at the top of your .py script:
 
 	import imp
-	lrc = imp.load_source('lrc', '../lrc.py')
-
+	lrc = imp.load_source('lrc', 'c:/lrc.py')
 	from lrc import *
 
 - imports modules
@@ -16,7 +20,7 @@ You only need the last line if lrc.py is in the same folder as your script.
   - math, random, time, datetime
 - defines helper functions
   - `pellet(num)`: Dispenses [num] pellets, then waits 700 ms. Defaults to 1 pellet.
-  - `sound(boolCorr)`: If True, play 'correct' sound; if False, play 'incorrect' sound.
+  - `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
   - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
 - initialises pygame, pygame.mixer
 - sets `screen` as (800, 600), fullscreen, no frame
