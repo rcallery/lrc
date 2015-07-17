@@ -25,17 +25,16 @@ Add these lines at the top of your .py script:
   + `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
   + `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
 - Initialises pygame
-- Sets `screen` as 800x600, fullscreen, no frame
+- Sets `screen` to 800x600 resolution, fullscreen, no frame
 - Defines rectangle `scrRect` with screen dimensions
+- Sets frame rate to `fps = 60` frames per second
 - Hides mouse cursor
 - Returns `joyCount = 0` if it can't find a joystick. Initialises joystick as `joy` if available
 - Sets cursor defaults
-```
-  cursorSpeed = 8
-  cursorSize = (20, 20)
-  cursorCol = (0, 0, 0)
-  cursorPos = (400, 200)
-```
+  + `cursorSpeed = 8` - number of pixels moved per frame
+  + `cursorSize = (20, 20)` - (width, height) in pixels
+  + `cursorCol = (0, 0, 0)` - black
+  + `cursorPos = (400, 200)` - (x, y) coordinates in pixels
 
 ## systemCheck
 
