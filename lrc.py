@@ -5,12 +5,15 @@ from pygame.locals import *
 pygame.init()
 
 # load sounds
-sndCor = pygame.mixer.Sound('sounds/correct.wav')
-sndIncor = pygame.mixer.Sound('sounds/incorrect.wav')
+# sndCor = pygame.mixer.Sound('c:/correct.wav')
+# sndIncor = pygame.mixer.Sound('c:/incorrect.wav')
+# [dev] local copies
+sndCor = pygame.mixer.Sound('../sounds/correct.wav')
+sndIncor = pygame.mixer.Sound('../sounds/incorrect.wav')
 
 # helper functions
 def sound(boolCorr):
-    '''If True, play 'correct' sound; if False, play 'incorrect' sound.'''
+    '''If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).'''
     if boolCorr:    sndCor.play()
     else:           sndIncor.play()
 
