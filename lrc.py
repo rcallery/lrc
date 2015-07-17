@@ -34,6 +34,7 @@ def quitEscQ():
 
 screen = pygame.display.set_mode((800, 600), (pygame.NOFRAME and pygame.FULLSCREEN))
 scrRect = pygame.Rect(0, 0, 800, 600)
+fps = 60
 
 # hide mouse and initialize joystick if available
 pygame.mouse.set_visible(False)
