@@ -1,5 +1,6 @@
-# delete these two lines if lrc.py is in the same folder
 import imp
+# lrc = imp.load_source('lrc', 'c:/lrc.py')
+# [dev] local copy
 lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
@@ -9,7 +10,7 @@ cursorSpeed = 8
 cursorSize = (25, 25)
 cursorPos = (400, 200)
 
-# for developing purposes (not fullscreen, with frame)
+# [dev] not fullscreen, with frame
 # screen = pygame.display.set_mode((800, 600))
 
 # define cursor
@@ -40,8 +41,9 @@ while True:
 
     if cursor.colliderect(corRect):
         sound(True)
-        pellet(3)
         cursor.center = cursorPos
+        # [dev]
+        # pellet(3)
     elif cursor.colliderect(incorRect):
         sound(False)
         cursor.center = cursorPos
