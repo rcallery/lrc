@@ -5,9 +5,6 @@ lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
 
-# [dev] not fullscreen, with frame
-# screen = pygame.display.set_mode((800, 600))
-
 # define cursor
 cursor = pygame.Rect((0, 0), cursorSize)
 cursor.center = cursorPos
@@ -20,12 +17,22 @@ incorRect.center = (600, 400)
 
 clock = pygame.time.Clock()
 
+# add text to background
+font = pygame.font.Font(None, 36)
+text = font.render('Press [p] for pellet, [s] for sound.', 1, (10, 10, 10))
+textpos = text.get_rect(centerx = bg.get_width() / 2, y = 15)
+bg.blit(text, textpos)
+
 while True:
     # quit on QUIT, [Esc], and [Q]
     quitEscQ()
 
     # gets key presses
     key = pygame.key.get_pressed()
+
+    # dispense pellet if [p] is pressed
+    if key[K_p]:    pellet()
+    if key[K_s]:    sound(True)
 
     # no movement unless kb or joystick input
     h_axis_pos = v_axis_pos = 0
@@ -57,11 +64,12 @@ while True:
         cursor.center = cursorPos
 
     # update screen
-    screen.fill((255, 255, 255))
+    screen.blit(bg, (0, 0))
     pygame.draw.rect(screen, (117, 227, 111), corRect)
     pygame.draw.rect(screen, (232, 70, 70), incorRect)
     pygame.draw.rect(screen, cursorCol, cursor)
-    pygame.display.update()
+    pygame.display.flip()
+    # pygame.display.update()
 
     # frame rate
     clock.tick(fps)
