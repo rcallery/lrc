@@ -28,12 +28,14 @@ def pellet(num = 1):
 def quitEscQ():
     '''Quit pygame on QUIT, [Esc], and [Q].'''
     for event in pygame.event.get():
-        if event.type == QUIT or (event.type == KEYDOWN and (event.key == K_ESCAPE or event.key == K_q)):
+        if event.type == QUIT or (event.type == KEYDOWN and (event.key in (K_ESCAPE, K_q))):
             pygame.quit()
             sys.exit()
 
-screen = pygame.display.set_mode((800, 600), (pygame.NOFRAME and pygame.FULLSCREEN))
-scrRect = pygame.Rect(0, 0, 800, 600)
+screen = pygame.display.set_mode((800, 600), (NOFRAME and FULLSCREEN))
+scrRect = pygame.Rect((0, 0), screen.get_size())
+bg = pygame.Surface(screen.get_size()).convert()
+bg.fill((250, 250, 250))
 fps = 60
 
 # hide mouse and initialize joystick if available
