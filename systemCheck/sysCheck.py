@@ -5,23 +5,21 @@ lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
 
-# define cursor
-cursor = pygame.Rect((0, 0), cursorSize)
-cursor.center = cursorPos
+# define cursor with start position
+initPos = (400, 200)
+cursor = Box(pos = initPos)
 
-# define incorrect and correct buttons
-corRect = pygame.Rect((0, 0), (150, 80))
-corRect.center = (200, 400)
-incorRect = pygame.Rect((0, 0), (150, 80))
-incorRect.center = (600, 400)
-
-clock = pygame.time.Clock()
+# define correct and incorrect buttons
+boxes = [Box((150, 80), (600, 400), (232, 70, 70)),
+         Box((150, 80), (200, 400), (117, 227, 111))]
 
 # add text to background
 font = pygame.font.Font(None, 36)
 text = font.render('Press [p] for pellet, [s] for sound.', 1, (10, 10, 10))
 textpos = text.get_rect(centerx = bg.get_width() / 2, y = 15)
 bg.blit(text, textpos)
+
+clock = pygame.time.Clock()
 
 while True:
     # quit on QUIT, [Esc], and [Q]
@@ -30,9 +28,15 @@ while True:
     # gets key presses
     key = pygame.key.get_pressed()
 
-    # dispense pellet if [p] is pressed
-    if key[K_p]:    pellet()
-    if key[K_s]:    sound(True)
+    # [p] dispenses pellet
+    if key[K_p]:
+        pellet()
+        pygame.time.delay(300)
+
+    # [s] plays whoop (correct.wav)
+    if key[K_s]:
+        sound(True)
+        pygame.time.delay(300)
 
     # no movement unless kb or joystick input
     h_axis_pos = v_axis_pos = 0
@@ -49,27 +53,25 @@ while True:
         h_axis_pos = round(joy.get_axis(0))
         v_axis_pos = round(joy.get_axis(1))
 
-    cursor.move_ip(h_axis_pos * cursorSpeed, 
-                   v_axis_pos * cursorSpeed)
+    cursor.move(h_axis_pos * cursor.speed, 
+                v_axis_pos * cursor.speed)
 
-    # keep cursor on-screen
-    cursor.clamp_ip(scrRect)
+    # return index of colliding box
+    select = cursor.collide(boxes)
 
-    if cursor.colliderect(corRect):
-        sound(True)
-        cursor.center = cursorPos
-        pellet(3)
-    elif cursor.colliderect(incorRect):
+    if select == 0:
         sound(False)
-        cursor.center = cursorPos
+        cursor.mv2pos(initPos)
+    elif select == 1:
+        sound(True)
+        cursor.mv2pos(initPos)
+        pellet(3)
 
     # update screen
     screen.blit(bg, (0, 0))
-    pygame.draw.rect(screen, (117, 227, 111), corRect)
-    pygame.draw.rect(screen, (232, 70, 70), incorRect)
-    pygame.draw.rect(screen, cursorCol, cursor)
-    pygame.display.flip()
-    # pygame.display.update()
+    screen.blit(cursor.image, cursor.rect)
+    for box in boxes:   screen.blit(box.image, box.rect)
+    pygame.display.update()
 
     # frame rate
     clock.tick(fps)
