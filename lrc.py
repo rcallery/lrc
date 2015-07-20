@@ -62,6 +62,30 @@ def quitEscQ():
             pygame.quit()
             sys.exit()
 
+def mvCursor(cursor):
+    """Moves cursor via joystick (if available) or arrow keys (if not)."""
+    # no movement unless kb or joystick input
+    h_axis_pos = v_axis_pos = 0
+
+    # gets key presses
+    key = pygame.key.get_pressed()
+
+    # move cursor with arrow keys
+    if joyCount == 0:
+        if key[K_LEFT]:    h_axis_pos = -1
+        if key[K_RIGHT]:   h_axis_pos = 1
+        if key[K_UP]:      v_axis_pos = -1
+        if key[K_DOWN]:    v_axis_pos = 1
+
+    # move cursor with joystick
+    if joyCount > 0:
+        h_axis_pos = round(joy.get_axis(0))
+        v_axis_pos = round(joy.get_axis(1))
+
+    cursor.move(h_axis_pos * cursor.speed, 
+                v_axis_pos * cursor.speed)
+
+
 screen = pygame.display.set_mode((800, 600), (NOFRAME and FULLSCREEN))
 scrRect = pygame.Rect((0, 0), screen.get_size())
 bg = pygame.Surface(screen.get_size()).convert()
