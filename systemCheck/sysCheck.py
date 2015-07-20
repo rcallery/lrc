@@ -38,23 +38,8 @@ while True:
         sound(True)
         pygame.time.delay(300)
 
-    # no movement unless kb or joystick input
-    h_axis_pos = v_axis_pos = 0
-
-    # move cursor with arrow keys (if joystick unavailable)
-    if joyCount == 0:
-        if key[K_LEFT]:    h_axis_pos = -1
-        if key[K_RIGHT]:   h_axis_pos = 1
-        if key[K_UP]:      v_axis_pos = -1
-        if key[K_DOWN]:    v_axis_pos = 1
-
-    # move cursor with joystick (if available)
-    if joyCount > 0:
-        h_axis_pos = round(joy.get_axis(0))
-        v_axis_pos = round(joy.get_axis(1))
-
-    cursor.move(h_axis_pos * cursor.speed, 
-                v_axis_pos * cursor.speed)
+    # move cursor (with joystick or kb)
+    mvCursor(cursor)
 
     # return index of colliding box
     select = cursor.collide(boxes)
