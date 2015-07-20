@@ -34,7 +34,7 @@ Add these lines at the top of your .py script:
   + `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
   + `pellet(num)`: Dispense [num] pellets, then wait 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
   + `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
-  + `mvCursor(cursor)` - Moves cursor via joystick (if available) or arrow keys (if not).
+  + `mvCursor(cursor)` - Move cursor via joystick (if available) or arrow keys (if not). Return horizontal and vertical movement direction.
 - Sets `screen` to `800x600` resolution, fullscreen, no frame
 - Defines rectangle `scrRect` with screen dimensions
 - Defines `bg` background surface object with screen dimensions and off-white (250, 250, 250) colour.
