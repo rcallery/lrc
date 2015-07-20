@@ -6,11 +6,15 @@ lrc = imp.load_source('lrc', '../lrc.py')
 from lrc import *
 
 # target colors
-cols = [(154, 55, 219), (7, 147, 235), (232, 70, 70), (117, 227, 111), \
-        (255, 239, 0), (255, 128, 0)]
+cols = {'purple': (154,  55, 219),
+        'blue':   (  7, 147, 235),
+        'red':    (232,  70,  70),
+        'green':  (117, 227, 111),
+        'yellow': (255, 239,   0),
+        'orange': (255, 128,   0)}
 
 def pickCol():
-    return random.sample(cols, 1)[0]
+    return random.choice(cols.values())
 
 def pickPos():
     x = random.randrange(25, 775)
