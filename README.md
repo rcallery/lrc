@@ -51,3 +51,17 @@ Add these lines at the top of your .py script:
 - Key presses:
   + [p]: dispenses pellet
   + [s]: plays whoop (correct.wav)
+
+## chase
+
+Chase target with cursor.
+
+- Target only moves when cursor moves
+- Target changes direction when it reaches the screen border
+- Catching target
+  + Plays whoop
+  + Dispenses a pellet
+  + Resets target with random 
+    - Position
+    - Colour (out of six presets)
+    - Direction (out of the eight compass directions)
