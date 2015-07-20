@@ -19,22 +19,27 @@ Add these lines at the top of your .py script:
 - Imports modules
   + pygame, pygame.locals
   + sys, os
-  + math, random, time, datetime
-- Defines helper functions
-  + `pellet(num)`: Dispense [num] pellets, then waits 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
-  + `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
-  + `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
+  + math, random, datetime
 - Initialises pygame
-- Sets `screen` to 800x600 resolution, fullscreen, no frame
+- Defines helper class `Box` with these defaults (for the cursor):
+  + `size = (20, 20)` - (width, height) in pixels
+  + `pos = (400, 300)` - (x, y) center coordinates in pixels
+  + `col = (0, 0, 0)` - black 
+  + `speed = 8` - number of pixels moved per frame
+  + Functions
+    * `move(x, y)` - Move box `x` pixels to the right and `y` pixels down. Keep box on-screen.
+    * `mv2pos(pos)` - Move box to position `(x, y)`.
+    * `collide(list)` - Test if box collides with a rectangle in the list, returns index. Returns `-1` when no collision is occuring.
+- Defines helper functions
+  + `sound(boolCorr)`: If True, play whoop (correct.wav); if False, play buzz (incorrect.wav).
+  + `pellet(num)`: Dispense [num] pellets, then wait 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
+  + `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
+- Sets `screen` to `800x600` resolution, fullscreen, no frame
 - Defines rectangle `scrRect` with screen dimensions
+- Defines `bg` background surface object with screen dimensions and off-white (250, 250, 250) colour.
 - Sets frame rate to `fps = 60` frames per second
 - Hides mouse cursor
 - Returns `joyCount = 0` if it can't find a joystick. Initialises joystick as `joy` if available
-- Sets cursor defaults
-  + `cursorSpeed = 8` - number of pixels moved per frame
-  + `cursorSize = (20, 20)` - (width, height) in pixels
-  + `cursorCol = (0, 0, 0)` - black
-  + `cursorPos = (400, 200)` - (x, y) coordinates in pixels
 
 ## systemCheck
 
@@ -42,3 +47,6 @@ Add these lines at the top of your .py script:
 - Resets cursor to start position
   + Green button plays sounds/correct.wav and dispenses three pellets
   + Red button plays sounds/incorrect.wav
+- Key presses:
+  + [p]: dispenses pellet
+  + [s]: plays whoop (correct.wav)
