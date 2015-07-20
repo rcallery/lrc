@@ -21,14 +21,21 @@ class Box(pygame.sprite.Sprite):
     def __init__(self, size = (20, 20), pos = (400, 300), col = (0, 0, 0), speed = 8):
         super(Box, self).__init__()
         self.image = pygame.Surface(size)
-        self.image.fill(col)
+        self.image.fill(col)        
         self.rect = self.image.get_rect()
         self.pos = self.rect.center = pos
-        self.speed = 8
+
+        self.speed = speed
+        self.size = size
+        self.col = col
+
+    def update(self):
+        self.image.fill(self.col)
+        self.rect.center = self.pos
 
     def move(self, x, y):
         """Move box x pixels to the right and y pixels down. Keep box on-screen."""
-        self.rect.move_ip(x, y)
+        self.rect.move_ip(x * self.speed, y * self.speed)
         self.rect.clamp_ip(scrRect)
 
     def mv2pos(self, pos):
@@ -64,7 +71,7 @@ def quitEscQ():
 
 def mvCursor(cursor):
     """Move cursor via joystick (if available) or arrow keys (if not).
-       Return horizontal and vertical movement direction."""
+       Returns boolean that is True when cursor is moving and False when it is not."""
     # no movement unless kb or joystick input
     x_dir = y_dir = 0
 
@@ -83,10 +90,10 @@ def mvCursor(cursor):
         x_dir = round(joy.get_axis(0))
         y_dir = round(joy.get_axis(1))
 
-    cursor.move(x_dir * cursor.speed, 
-                y_dir * cursor.speed)
+    cursor.move(x_dir, y_dir)
 
-    return x_dir, y_dir
+    if x_dir == y_dir == 0:  return False
+    else:                    return True
 
 
 screen = pygame.display.set_mode((800, 600), (NOFRAME and FULLSCREEN))
