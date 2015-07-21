@@ -97,10 +97,10 @@ def mvCursor(cursor):
 
 
 def getParams(varNames, file = 'parameters.txt'):
-    """Read in all odd lines from a text file (default 'parameters.txt'). 
+    """Read in all even lines from a text file (default 'parameters.txt'). 
         Takes list of strings as argument, creates variables accordingly
-        and stores the respective values. It is important that strings 
-        in the parameter file are encased in quotes!"""
+        and stores the respective values. Make sure that text values in the
+        parameter file are encased in quotes!"""
     txt = open(file)
 
     for i, line in enumerate(txt):
