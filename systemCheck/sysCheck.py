@@ -5,6 +5,9 @@ lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
 
+# set screen
+screen = setScreen()
+
 # define cursor with start position
 initPos = (400, 200)
 cursor = Box(pos = initPos)
