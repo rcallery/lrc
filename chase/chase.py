@@ -1,8 +1,13 @@
+# keep score, display on-screen
+# vary target speed adaptively
+# - increment if correct
+# - decrement if not caught within xx sec (& time out)
+# save data to file
+
 import imp
 # lrc = imp.load_source('lrc', 'c:/lrc.py')
 # [dev] local copy
 lrc = imp.load_source('lrc', '../lrc.py')
-
 from lrc import *
 
 # set screen; define cursor
@@ -13,7 +18,6 @@ screen = setScreen()
 # cursor = Box(col = (250, 250, 250))
 
 # light theme
-bg.fill((250, 250, 250))
 cursor = Box()
 
 # target colors
