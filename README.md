@@ -8,6 +8,10 @@ Have these files in `C:/`
 - `correct.wav`
 - `incorrect.wav`
 
+Other files
+- `MonkeyName.txt` - default folder: `C:/`
+- `parameters.txt` - default folder: same as your script
+
 Add these lines at the top of your .py script:
 
 	import imp
