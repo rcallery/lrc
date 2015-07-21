@@ -64,6 +64,10 @@ Defaults (for the cursor):
 
 * * *
 
+## template
+
+This is a minimal working example. It creates a default display with a default cursor, which is controlled via joystick (if available) or mouse (if not).
+
 ## systemCheck
 
 - Select one of two buttons
