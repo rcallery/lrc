@@ -11,7 +11,7 @@ bg.fill((250, 250, 250))
 fps = 60
 
 def setScreen():
-    """Define screen with scrSize, no frame, and full screen."""
+    '''Define screen with scrSize, no frame, and full screen.'''
     return pygame.display.set_mode(scrSize, (NOFRAME and FULLSCREEN))
 
 # hide mouse and initialize joystick if available
@@ -33,8 +33,8 @@ pelletPath = 'c:/pellet.exe'
 
 # helper class
 class Box(pygame.sprite.Sprite):
-    """Class for box with default dimensions (20, 20), in the screen 
-       center, black colour, and speed 8."""
+    '''Class for box with default dimensions (20, 20), in the screen 
+       center, black colour, and speed 8.'''
 
     def __init__(self, size = (20, 20), pos = (400, 300), col = (0, 0, 0), speed = 8):
         super(Box, self).__init__()
@@ -48,22 +48,28 @@ class Box(pygame.sprite.Sprite):
         self.col = col
 
     def update(self):
+        '''Update colour and position.'''
         self.image.fill(self.col)
         self.rect.center = self.pos
 
+    def draw(self, surface):
+        '''Draw box onto surface. Pass display/screen assigned with setScreen().'''
+        surface.blit(self.image, self.rect)
+
     def move(self, x, y):
-        """Move box x pixels to the right and y pixels down. Keep box on-screen."""
+        '''Move box x pixels to the right and y pixels down. Keep box on-screen.'''
         self.rect.move_ip(x * self.speed, y * self.speed)
         self.rect.clamp_ip(scrRect)
 
     def mv2pos(self, pos):
-        """Move box to position (x, y)."""
+        '''Move box to position (x, y).'''
         self.rect.center = pos
 
     def collide(self, list):
-        """Test if box collides with a rectangle in the list, returns index. 
-           Returns -1 when no collision is occuring."""
+        '''Test if box collides with a rectangle in the list, returns index. 
+           Returns -1 when no collision is occuring.'''
         return self.rect.collidelist(list)
+
 
 
 # helper functions
@@ -88,8 +94,8 @@ def quitEscQ():
             sys.exit()
 
 def mvCursor(cursor):
-    """Move cursor via joystick (if available) or arrow keys (if not).
-       Returns boolean that is True when cursor is moving and False when it is not."""
+    '''Move cursor via joystick (if available) or arrow keys (if not).
+       Returns boolean that is True when cursor is moving and False when it is not.'''
     # no movement unless kb or joystick input
     x_dir = y_dir = 0
 
@@ -99,9 +105,9 @@ def mvCursor(cursor):
     # move cursor with arrow keys
     if joyCount == 0:
         if key[K_LEFT]:    x_dir = -1
-        if key[K_RIGHT]:   x_dir = 1
+        if key[K_RIGHT]:   x_dir =  1
         if key[K_UP]:      y_dir = -1
-        if key[K_DOWN]:    y_dir = 1
+        if key[K_DOWN]:    y_dir =  1
 
     # move cursor with joystick
     if joyCount > 0:
@@ -115,10 +121,10 @@ def mvCursor(cursor):
 
 
 def getParams(varNames, file = 'parameters.txt'):
-    """Read in all even lines from a text file (default 'parameters.txt'). 
+    '''Read in all even lines from a text file (default 'parameters.txt'). 
         Takes list of variable names as argument and stores them with
         their values. Returns a dictionary. Make sure that text values 
-        in the parameter file are encased in quotes!"""
+        in the parameter file are encased in quotes!'''
     params = {}
     txt = open(file)
 
@@ -131,8 +137,8 @@ def getParams(varNames, file = 'parameters.txt'):
     return params
 
 def makeFileName(file = 'c:/MonkeyName.txt'):
-    """Read monkey name from file (default: c:/MonkeyName.txt). Get current 
-        date. Returns string of form name_YYYY-MM-DD.txt."""
+    '''Read monkey name from file (default: c:/MonkeyName.txt). Get current 
+        date. Returns string of form MonkeyName_YYYY-MM-DD.txt.'''
     target = open(file)
     monkey = target.read()
     target.close()
