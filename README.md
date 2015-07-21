@@ -19,7 +19,7 @@ Add these lines at the top of your .py script:
 - Imports modules
   + pygame, pygame.locals
   + sys, os
-  + math, random, datetime
+  + math, random, time
 - Initialises pygame
 - Sets `scrSize` to `800x600` resolution
 - `setScreen()` - Return display with screen dimensions, no frame, and fullscreen. 
@@ -83,3 +83,4 @@ Toolbox implementation of chase
     - Position
     - Colour (out of six presets)
     - Direction (out of the eight compass directions)
+- Choice of dark or light theme (black cursor on white or vice versa) ;)
