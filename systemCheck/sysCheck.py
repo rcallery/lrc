@@ -57,8 +57,8 @@ while True:
 
     # update screen
     screen.blit(bg, (0, 0))
-    screen.blit(cursor.image, cursor.rect)
-    for box in boxes:   screen.blit(box.image, box.rect)
+    cursor.draw(screen)
+    for box in boxes:   box.draw(screen)
     pygame.display.update()
 
     # frame rate
