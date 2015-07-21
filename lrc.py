@@ -1,8 +1,26 @@
 import pygame, sys, os
-import math, random, datetime
+import math, random, time
 from pygame.locals import *
 
 pygame.init()
+
+scrSize = (800, 600)
+scrRect = pygame.Rect((0, 0), scrSize)
+bg = pygame.Surface(scrSize)
+bg.fill((250, 250, 250))
+fps = 60
+
+def setScreen():
+    """Define screen with scrSize, no frame, and full screen."""
+    return pygame.display.set_mode(scrSize, (NOFRAME and FULLSCREEN))
+
+# hide mouse and initialize joystick if available
+pygame.mouse.set_visible(False)
+
+joyCount = pygame.joystick.get_count()
+if joyCount > 0:
+    joy = pygame.joystick.Joystick(0)
+    joy.init()
 
 # load sounds
 # [dev] local copies
@@ -12,8 +30,8 @@ sndCor = pygame.mixer.Sound('../correct.wav')
 sndIncor = pygame.mixer.Sound('../incorrect.wav')
 pelletPath = 'c:/pellet.exe'
 
-# helper class
 
+# helper class
 class Box(pygame.sprite.Sprite):
     """Class for box with default dimensions (20, 20), in the screen 
        center, black colour, and speed 8."""
@@ -98,29 +116,27 @@ def mvCursor(cursor):
 
 def getParams(varNames, file = 'parameters.txt'):
     """Read in all even lines from a text file (default 'parameters.txt'). 
-        Takes list of strings as argument, creates variables accordingly
-        and stores the respective values. Make sure that text values in the
-        parameter file are encased in quotes!"""
+        Takes list of variable names as argument and stores them with
+        their values. Returns a dictionary. Make sure that text values 
+        in the parameter file are encased in quotes!"""
+    params = {}
     txt = open(file)
 
     for i, line in enumerate(txt):
         if i % 2 == 1:
             j = i / 2
-            exec(varNames[j] + '=' + line.strip('\r\n')) in globals()
+            params[varNames[j]] = line.strip('\r\n')
 
     txt.close()
+    return params
 
+def makeFileName(file = 'c:/MonkeyName.txt'):
+    """Read monkey name from file (default: c:/MonkeyName.txt). Get current 
+        date. Returns string of form name_YYYY-MM-DD.txt."""
+    target = open(file)
+    monkey = target.read()
+    target.close()
 
-screen = pygame.display.set_mode((800, 600), (NOFRAME and FULLSCREEN))
-scrRect = pygame.Rect((0, 0), screen.get_size())
-bg = pygame.Surface(screen.get_size()).convert()
-bg.fill((250, 250, 250))
-fps = 60
+    today = time.strftime('%Y-%m-%d')
+    return monkey + '_' + today + '.txt'
 
-# hide mouse and initialize joystick if available
-pygame.mouse.set_visible(False)
-
-joyCount = pygame.joystick.get_count()
-if joyCount > 0:
-    joy = pygame.joystick.Joystick(0)
-    joy.init()
