@@ -42,6 +42,8 @@ Defaults (for the cursor):
 - `col = (0, 0, 0)` - black 
 - `speed = 8` - number of pixels moved per frame
 - Functions
+  + `update()` - Update colour and position.
+  + `draw(surface)` - Draw box onto `surface`. (Pass display/screen object assigned with `setScreen()`.)
   + `move(x, y)` - Move box `x` pixels to the right and `y` pixels down. Keep box on-screen.
   + `mv2pos(pos)` - Move box to position `(x, y)`.
   + `collide(list)` - Test if box collides with a rectangle in the list, returns index. Returns `-1` when no collision is occuring.
