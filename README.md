@@ -35,7 +35,7 @@ Add these lines at the top of your .py script:
   + `pellet(num)`: Dispense [num] pellets, then wait 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
   + `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
   + `mvCursor(cursor)` - Move cursor via joystick (if available) or arrow keys (if not). Returns boolean that is True when cursor is moving and False when it is not.
-  + `getParams(varNames, files = 'parameters.txt')` - Read in all odd lines from a text file (default 'parameters.txt'). Takes list of strings as argument, creates variables accordingly and stores the respective values. It is important that strings in the parameter file are encased in quotes!
+  + `getParams(varNames, file = 'parameters.txt')` - Read in all even lines from a text file (default: `parameters.txt`). Takes list of strings as argument, creates variables accordingly, and stores the respective values. **Make sure that text values in the parameter file are encased in quotes!**
 - Sets `screen` to `800x600` resolution, fullscreen, no frame
 - Defines rectangle `scrRect` with screen dimensions
 - Defines `bg` background surface object with screen dimensions and off-white (250, 250, 250) colour.
