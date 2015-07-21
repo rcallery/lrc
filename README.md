@@ -3,10 +3,10 @@
 ## LRC Toolbox - lrc.py
 
 Have these files in `C:/`
-- lrc.py
-- pellet.exe
-- correct.wav
-- incorrect.wav
+- `lrc.py`
+- `pellet.exe`
+- `correct.wav`
+- `incorrect.wav`
 
 Add these lines at the top of your .py script:
 
@@ -21,7 +21,9 @@ Add these lines at the top of your .py script:
   + sys, os
   + math, random, datetime
 - Initialises pygame
-- Sets `screen` to `800x600` resolution, fullscreen, no frame
+- Sets `scrSize` to `800x600` resolution
+- `setScreen()` - Return display with screen dimensions, no frame, and fullscreen. 
+  (Assign to variable.)
 - Defines rectangle `scrRect` with screen dimensions
 - Defines `bg` background surface object with screen dimensions and off-white (250, 250, 250) colour.
 - Sets frame rate to `fps = 60` frames per second
@@ -45,7 +47,16 @@ Defaults (for the cursor):
 - `pellet(num)`: Dispense [num] pellets, then wait 700 ms. Defaults to 1 pellet. Doesn't do anything if it can't find `pellet.exe` (for development).
 - `quitEscQ()`: Quit pygame on QUIT, [Esc], and [Q]. (Use inside main game loop.)
 - `mvCursor(cursor)` - Move cursor via joystick (if available) or arrow keys (if not). Returns boolean that is True when cursor is moving and False when it is not.
-- `getParams(varNames, file = 'parameters.txt')` - Read in all even lines from a text file (default: `parameters.txt`). Takes list of strings as argument, creates variables accordingly, and stores the respective values. *Make sure that text values in the parameter file are encased in quotes!*
+- `getParams(varNames, file = 'parameters.txt')` - Read in all even lines from a text file (default 'parameters.txt'). 
+        Takes list of variable names as argument and stores them with
+        their values. Returns a dictionary. *Make sure that text values in the parameter file are encased in quotes!*
+  + The dictionary can then be converted into variables:
+    ```
+    var = ['var1', 'var2', 'var3', 'var4]
+    parameters = getParams(var)
+    globals().update(parameters)
+    ```
+- `makeFileName(file = 'c:/MonkeyName.txt')` - Read monkey name from file (default: `c:/MonkeyName.txt`). Get current date. Returns string of form `MonkeyName_YYYY-MM-DD.txt`.
 
 * * *
 
