@@ -96,6 +96,21 @@ def mvCursor(cursor):
     else:                    return True
 
 
+def getParams(varNames, file = 'parameters.txt'):
+    """Read in all odd lines from a text file (default 'parameters.txt'). 
+        Takes list of strings as argument, creates variables accordingly
+        and stores the respective values. It is important that strings 
+        in the parameter file are encased in quotes!"""
+    txt = open(file)
+
+    for i, line in enumerate(txt):
+        if i % 2 == 1:
+            j = i / 2
+            exec(varNames[j] + '=' + line.strip('\r\n')) in globals()
+
+    txt.close()
+
+
 screen = pygame.display.set_mode((800, 600), (NOFRAME and FULLSCREEN))
 scrRect = pygame.Rect((0, 0), screen.get_size())
 bg = pygame.Surface(screen.get_size()).convert()
