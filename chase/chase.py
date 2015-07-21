@@ -5,6 +5,17 @@ lrc = imp.load_source('lrc', '../lrc.py')
 
 from lrc import *
 
+# set screen; define cursor
+screen = setScreen()
+
+# dark theme
+# bg.fill((0, 0, 0))
+# cursor = Box(col = (250, 250, 250))
+
+# light theme
+bg.fill((250, 250, 250))
+cursor = Box()
+
 # target colors
 cols = {'purple': (154,  55, 219),
         'blue':   (  7, 147, 235),
@@ -28,12 +39,9 @@ def pickDir():
         y_dir = random.randrange(3) - 1
     return x_dir, y_dir
 
-# define cursor and target
-cursor = Box(col = (250, 250, 250))
+# define target
 target = Box((50, 50), pickPos(), pickCol(), speed = 5)
 tx_dir, ty_dir = pickDir()
-
-bg.fill((0, 0, 0))
 
 clock = pygame.time.Clock()
 
