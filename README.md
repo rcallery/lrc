@@ -25,11 +25,21 @@ Add these lines at the top of your .py script:
   + sys, os
   + math, random, time
 - Initialises pygame
+- Pre-defines colour dictionary:
+  + white: (255, 255, 255)
+  + black:  (  0,   0,   0)
+  + purple: (154,  55, 219)
+  + blue:   (  7, 147, 235)
+  + red:    (232,  70,  70)
+  + green:  (117, 227, 111)
+  + yellow: (255, 239,   0)
+  + orange: (255, 128,   0)
+  + Use with `cols['white']` etc.
 - Sets `scrSize` to `800x600` resolution
 - `setScreen()` - Return display with screen dimensions, no frame, and fullscreen. 
   (Assign to variable.)
 - Defines rectangle `scrRect` with screen dimensions
-- Defines `bg` background surface object with screen dimensions and off-white (250, 250, 250) colour.
+- Defines `bg` background surface object with screen dimensions and white colour.
 - Sets frame rate to `fps = 60` frames per second
 - Hides mouse cursor
 - Returns `joyCount = 0` if it can't find a joystick. Initialises joystick as `joy` if available
