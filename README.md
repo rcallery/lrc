@@ -26,15 +26,8 @@ Add these lines at the top of your .py script:
   + math, random, time
 - Initialises pygame
 - Pre-defines colour dictionary:
-  + white: (255, 255, 255)
-  + black:  (  0,   0,   0)
-  + purple: (154,  55, 219)
-  + blue:   (  7, 147, 235)
-  + red:    (232,  70,  70)
-  + green:  (117, 227, 111)
-  + yellow: (255, 239,   0)
-  + orange: (255, 128,   0)
-  + Use with `cols['white']` etc.
+  + white, black, purple, blue, red, green, yellow, orange
+  + Use with `cols['colour name']`
 - Sets `scrSize` to `800x600` resolution
 - `setScreen()` - Return display with screen dimensions, no frame, and fullscreen. 
   (Assign to variable.)
