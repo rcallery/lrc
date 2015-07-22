@@ -4,10 +4,20 @@ from pygame.locals import *
 
 pygame.init()
 
+# pre-set colours
+cols = {'white':  (255, 255, 255),
+        'black':  (  0,   0,   0),
+        'purple': (154,  55, 219),
+        'blue':   (  7, 147, 235),
+        'red':    (232,  70,  70),
+        'green':  (117, 227, 111),
+        'yellow': (255, 239,   0),
+        'orange': (255, 128,   0)}
+
 scrSize = (800, 600)
 scrRect = pygame.Rect((0, 0), scrSize)
 bg = pygame.Surface(scrSize)
-bg.fill((250, 250, 250))
+bg.fill(cols['white'])
 fps = 60
 
 def setScreen():
@@ -36,7 +46,7 @@ class Box(pygame.sprite.Sprite):
     '''Class for box with default dimensions (20, 20), in the screen 
        center, black colour, and speed 8.'''
 
-    def __init__(self, size = (20, 20), pos = (400, 300), col = (0, 0, 0), speed = 8):
+    def __init__(self, size = (20, 20), pos = (400, 300), col = cols['black'], speed = 8):
         super(Box, self).__init__()
         self.image = pygame.Surface(size)
         self.image.fill(col)        
