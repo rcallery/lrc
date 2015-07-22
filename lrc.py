@@ -136,13 +136,14 @@ def getParams(varNames, file = 'parameters.txt'):
     txt.close()
     return params
 
-def makeFileName(file = 'c:/MonkeyName.txt'):
-    '''Read monkey name from file (default: c:/MonkeyName.txt). Get current 
-        date. Returns string of form MonkeyName_YYYY-MM-DD.txt.'''
+def makeFileName(file = 'c:/MonkeyName.txt', task = 'Task'):
+    '''Read monkey name from file (default: c:/MonkeyName.txt). Argument 
+        task takes the task name (encased in quotes). Get current 
+        date. Return string of form MonkeyName_Task_YYYY-MM-DD.txt.'''
     target = open(file)
     monkey = target.read()
     target.close()
 
     today = time.strftime('%Y-%m-%d')
-    return monkey + '_' + today + '.txt'
+    return monkey + '_' + task + '_' + today + '.txt'
 
