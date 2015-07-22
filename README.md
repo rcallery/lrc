@@ -57,11 +57,13 @@ Defaults (for the cursor):
         Takes list of variable names as argument and stores them with
         their values. Returns a dictionary. *Make sure that text values in the parameter file are encased in quotes!*
   + The dictionary can then be converted into variables:
+    
     ```
     var = ['var1', 'var2', 'var3', 'var4]
     parameters = getParams(var)
     globals().update(parameters)
     ```
+    
 - `makeFileName(file = 'c:/MonkeyName.txt')` - Read monkey name from file (default: `c:/MonkeyName.txt`). Get current date. Returns string of form `MonkeyName_YYYY-MM-DD.txt`.
 
 * * *
