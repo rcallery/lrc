@@ -63,8 +63,8 @@ Defaults (for the cursor):
     parameters = getParams(var)
     globals().update(parameters)
     ```
-    
-- `makeFileName(file = 'c:/MonkeyName.txt')` - Read monkey name from file (default: `c:/MonkeyName.txt`). Get current date. Returns string of form `MonkeyName_YYYY-MM-DD.txt`.
+
+- `makeFileName(file = 'c:/MonkeyName.txt', task = 'Task')` - Read monkey name from file (default: `c:/MonkeyName.txt`). Argument task takes the task name (encased in quotes). Get current date. Return string of form `MonkeyName_Task_YYYY-MM-DD.txt`.
 
 * * *
 
